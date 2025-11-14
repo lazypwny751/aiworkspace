@@ -1,0 +1,193 @@
+% Diferansiyel Denklemler Ozet
+
+\section{Diferansiyel Denklemler Ozet}
+
+Bu bolum, sinavda en cok isine yarayacak temel ODE turleri icin kisa bir
+\emph{recete} sunar.
+
+\subsection{Temel Tanimlar}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Mertebe (order):} Denklemde gecen en yuksek turevin derecesi.
+    Ornek: $y'' + 3y' - 2y = 0$ \,$\Rightarrow$\, 2. mertebe.
+  \item \textbf{Lineer ODE:} $y, y', y'', \dots$ terimleri 1. dereceden, kendi
+    aralarinda carpim yok. Ornek: $y' + p(x)y = q(x)$ lineer; $y^2 y' = x$ lineer degil.
+  \item \textbf{Genel cozum:} Icinde sabitler ($C, C_1, C_2, \dots$) bulunan cozum ailesi.
+  \item \textbf{Ozel cozum:} Baslangic/kenar kosullari yerlestirince elde edilen belirli cozum.
+\end{itemize}
+
+\subsection{Ayrilabilir Denklemler}
+
+\textbf{Form:}
+\[
+\frac{dy}{dx} = f(x) g(y)
+\]
+veya buna denk bir yazilis.
+
+\textbf{Recete:}
+\begin{enumerate}[leftmargin=*]
+  \item Tum $y$ terimlerini bir tarafa, $x$ terimlerini diger tarafa topla:
+    \[
+    \frac{1}{g(y)} \, dy = f(x) \, dx.
+    \]
+  \item Her iki tarafi da integre et:
+    \[
+    \int \frac{1}{g(y)} \, dy = \int f(x) \, dx + C.
+    \]
+  \item Mumkunse $y$'yi yalniz birak.
+\end{enumerate}
+
+\paragraph{Mini ornek.}
+\[
+\frac{dy}{dx} = x y
+\]
+Ayir:
+\[
+\frac{1}{y} \, dy = x \, dx.
+\]
+Integralle:
+\[
+\ln|y| = \frac{x^2}{2} + C \quad \Rightarrow \quad y = C e^{x^2/2}.
+\]
+
+Bu tip denklemler, temel seviye fizik ve uygulama sorularinda sik karsina cikar.
+
+\subsection{Birinci Mertebe Lineer Denklemler}
+
+\textbf{Genel form:}
+\[
+y' + p(x) y = q(x).
+\]
+
+\textbf{Recete (entegrasyon faktoru):}
+\begin{enumerate}[leftmargin=*]
+  \item $p(x)$'i belirle.
+  \item Entegrasyon faktorunu hesapla:
+    \[
+    \mu(x) = e^{\int p(x) \, dx}.
+    \]
+  \item Denklemin her iki yanini $\mu(x)$ ile carp:
+    \[
+    \mu(x) y' + \mu(x) p(x) y = \mu(x) q(x).
+    \]
+  \item Sol taraf artik bir turevdir:
+    \[
+    (\mu(x) y)' = \mu(x) q(x).
+    \]
+  \item Her iki tarafi integra et:
+    \[
+    \mu(x) y = \int \mu(x) q(x) \, dx + C.
+    \]
+  \item Son olarak $y$'yi yalniz birak:
+    \[
+    y(x) = \frac{1}{\mu(x)}\left( \int \mu(x) q(x) \, dx + C \right).
+    \]
+\end{enumerate}
+
+\paragraph{Not.} Ana dosyanin turev-integral bolumunde bu tipe ait detayli bir ornek var.
+
+\subsection{Sabit Katsayili 2. Mertebe Lineer ODE'ler}
+
+\textbf{Genel form:}
+\[
+ay'' + by' + cy = 0, \quad a \ne 0.
+\]
+
+\textbf{Adim 1: Karakteristik denklem.}
+\[
+a\lambda^2 + b\lambda + c = 0.
+\]
+
+Cozumler kok turune gore ayrilir.
+
+\subsubsection{Iki Gercek Ayri k Kok (iki farkli gercek kok)}
+
+Karakteristik denklemden iki farkli gercek kok elde edildigini varsayalim; bunlari
+$\lambda_1$ ve $\lambda_2$ ile gosterirsek genel cozum
+\[
+y(x) = C_1 e^{\lambda_1 x} + C_2 e^{\lambda_2 x}
+\]
+seklindedir.
+
+\subsubsection{Cakisik Gercek Kok (cakisik gercek kok)}
+
+Eger karakteristik denklemden tek bir gercek kok (cakisik kok) cikarsa, bu koku
+$\lambda$ ile gosteririz ve genel cozum
+\[
+y(x) = (C_1 + C_2 x) e^{\lambda x}
+\]
+seklindedir.
+
+\subsubsection{Karmasik Esl enik Kokler (alfa artı-eksi i beta turu karmasik kokler)}
+
+Karakteristik denklemden karmasik eslenik kokler elde edersek, bunlari
+$\lambda_{1,2} = \alpha \pm i\beta$ seklinde yazabiliriz. Bu durumda genel cozum
+\[
+y(x) = e^{\alpha x} (C_1 \cos(\beta x) + C_2 \sin(\beta x))
+\]
+bi\c cimindedir.
+
+\paragraph{Ozet.}
+\begin{itemize}[leftmargin=*]
+  \item $\Delta = b^2 - 4ac > 0$ ise: iki gercek ayri k kok.
+  \item $\Delta = 0$ ise: cakisik kok.
+  \item $\Delta < 0$ ise: karmasik kokler.
+\end{itemize}
+
+\subsection{Zorlanmis (Sag Tarafli) Sabit Katsayili Lineer ODE}
+
+\textbf{Form:}
+\[
+ay'' + by' + cy = g(x).
+\]
+
+\textbf{Genel strateji:}
+\begin{enumerate}[leftmargin=*]
+  \item Once homojen kismi coz: $ay'' + by' + cy = 0$ \,$\Rightarrow$\, $y_h$.
+  \item Sonra, $g(x)$'in turune gore bir \emph{ozel cozum} $y_p$ tahmin et:
+    \begin{itemize}[leftmargin=*]
+      \item $g(x)$ polinom ise: polinom formunda dene.
+      \item $g(x) = e^{kx}$ ise: $Ae^{kx}$ dene.
+      \item $g(x) = \sin bx$ veya $\cos bx$ ise: $A\cos bx + B\sin bx$ dene.
+    \end{itemize}
+  \item Toplam cozum: $y = y_h + y_p$.
+\end{enumerate}
+
+Detayli hesap, ders seviyene gore degisebilir; fakat bu \emph{iskelet} hep aynidir.
+
+\subsection{Fiziksel Yorumlar (Cok Kisa)}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Harmonik osilator:} $y'' + \omega^2 y = 0$  $\Rightarrow$ sin\"us-kosin\"us tipinde salinim cozumleri.
+  \item \textbf{Sonumlu salinim:} $y'' + 2\gamma y' + \omega^2 y = 0$  
+    icin koklerin dogasi (gercek/cakisik/karmasik) sistemin ne kadar hizli sonumlend igini belirler.
+\end{itemize}
+
+Bu tur yorumlar, elde ettigin cozumun formunun fiziksel olarak mantikli olup
+olmadigini kontrol etmek icin iyi bir sezgi kaynagi saglar.
+
+\section*{Diferansiyel Denklem Ornekleri ve Alistirmalar}
+
+Asagidaki kisa ornekler, farkli ODE turleri icin receteleri uygulama alistirmasi
+olarak dusunulebilir. Cogu icin sadece genel cozumu bulman yeterlidir.
+
+\begin{enumerate}[leftmargin=*]
+  \item $\displaystyle \frac{dy}{dx} = 3y$ icin ayrilabilirlik recetesini kullanarak genel cozumu bul.
+  \item $\displaystyle \frac{dy}{dx} = x y$ denklemi icin ayirma adimlarini yaz ve genel cozumu elde et.
+  \item $\displaystyle y' + y = 0$ denklemini birinci mertebe lineer receteyle coz.
+  \item $\displaystyle y' - 2y = e^{3x}$ denklemi icin integrasyon faktorunu yaz ve genel cozumu bul.
+    \textbf{Cozum:} Entegrasyon faktoru $\mu(x) = e^{\int -2 dx} = e^{-2x}$.
+    Denklemi carparsak: $(e^{-2x}y)' = e^{-2x}e^{3x} = e^x$.
+    Integral alirsak: $e^{-2x}y = \int e^x dx = e^x + C$.
+    Genel cozum: $y(x) = e^{3x} + Ce^{2x}$.
+  \item $y'' - 3y' + 2y = 0$ icin karakteristik denklemi yaz, kokleri bul ve genel cozumu belirt.
+  \item $y'' + y = 0$ denklemi icin cozumun sin ve cos cinsinden genel formunu yaz.
+  \item $y'' + 4y = 0$ denkleminin karakteristik koklerini ve buna karsilik gelen salinim
+    frekansini (omega) yorumla.
+  \item $y'' - y = e^x$ gibi zorlanmis bir denklem icin (homojen + ozel cozum) genel cozum
+    stratejisini kisa maddeler halinde ozetle (detayli hesap zorunlu degil).
+  \item Baslangic deger problemi: $y' = 2y$, $y(0) = 3$ icin once genel cozumu bul, sonra baslangic
+    kosulunu kullanarak sabiti belirle.
+  \item $y'' + 2y' + y = 0$ denklemi icin $\Delta = b^2 - 4ac$ degerini hesapla ve koklerin hangi
+    tipte oldugunu (ayrik, cakisik, karmasik) siniflandir; buna gore genel cozumu yaz.
+\end{enumerate}

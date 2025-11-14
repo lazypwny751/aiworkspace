@@ -1,0 +1,164 @@
+% Polinomlar ve Temel Fonksiyonlar
+
+\section{Polinomlar ve Temel Fonksiyonlar}
+
+Bu bolum, diferansiyel denklemlerde karsina cikacak fonksiyon tiplerini rahatca
+taniman ve onlarla islem yapman icin kisa bir ozet sunar.
+
+\subsection{Polinom Tanim ve Gosterim}
+
+Genel bir polinom
+\[
+P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0
+\]
+seklindedir. Burada
+\begin{itemize}[leftmargin=*]
+  \item $n$ polinomun \emph{derecesi},
+  \item $a_i$'ler \emph{katsayilar},
+  \item $a_n \neq 0$ bas katsayidir.
+\end{itemize}
+
+\paragraph{Ornek.} $P(x) = 2x^3 - 5x + 1$ icin derece $3$, bas katsayi $2$'dir.
+
+\paragraph{Not.} Diferansiyel denklemlerde sik sik katsayilari polinom olan denklemler
+\(y'' - 3y' + 2y = 0\) gibi karsimiza cikar. Katsayilari, dereceleri ve isaretleri
+dogru okumak cozum seklini dogru yazmak icin kritiktir.
+
+\subsection{Polinomlarda Temel Islemler}
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{Toplama/\c cikar ma:} Benzer dereceli terimleri topla.
+  \item \textbf{Carpma:} Dagilma ozelligi kullanilir; bazen carp anlara ayirmak
+        daha pratik olabilir.
+  \item \textbf{Bolme:} Uzun bolme veya sentetik bolme; sinavda genelde basit
+        ornekler kullanilir.
+\end{itemize}
+
+\paragraph{Ornek (toplama).}
+\[
+(2x^2 + 3x - 1) + (x^2 - x + 4) = 3x^2 + 2x + 3.
+\]
+
+\paragraph{Ornek (carpma).}
+\[
+(x+1)(x-2) = x^2 - x - 2.
+\]
+
+Bu temel islemler, ozellikle karakteristik polinomlari cozerken kullanilir;
+ornegin
+\[
+\lambda^2 - 3\lambda + 2 = 0.
+\]
+
+\subsection{Kokler ve Carp anlara Ayirma}
+
+Bir polinomun $x=r$ noktasinda \emph{koku} varsa
+\[
+P(r) = 0
+\]
+ve \((x-r)\) polinomu \(P(x)\)'i boler.
+
+Iki dereceli denklemler icin standart cozum formulu:
+\[
+ax^2 + bx + c = 0 \Rightarrow x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}.
+\]
+
+\paragraph{Ornek.}
+\[
+x^2 - 3x + 2 = 0 \Rightarrow x=1,\ x=2,
+\]
+bu nedenle
+\[
+x^2 - 3x + 2 = (x-1)(x-2).
+\]
+
+\paragraph{Diferansiyel denklem baglantisi.}
+Iki mertebe sabit katsayili lineer ODE icin karakteristik denklem her zaman bir
+polinomdur:
+\[
+y'' - 3y' + 2y = 0 \Rightarrow \lambda^2 - 3\lambda + 2 = 0 \Rightarrow (\lambda-1)(\lambda-2)=0.
+\]
+Koklerin turu (gercek, cakisik, karmasik) cozumun seklini belirler; detaylari
+daha sonra diferansiyel denklemler bolumunde gorecegiz.
+
+\subsection{Temel Fonksiyon Tipleri}
+
+Diferansiyel denklemlerde sik karsilasan \emph{standart cozum} tipleri:
+\begin{enumerate}[leftmargin=*]
+  \item Polinomlar: $P(x)$.
+  \item Ustel fonksiyonlar: $e^{kx}$, $a^x$.
+  \item Trigonometrik fonksiyonlar: $\sin x, \cos x, \tan x, \dots$
+  \item Logaritma: $\ln x, \log_a x$.
+\end{enumerate}
+
+\paragraph{Neden onemli?}
+\begin{itemize}[leftmargin=*]
+  \item Sabit katsayili lineer ODE cozumleri genellikle $e^{kx}$, $\sin x$, $\cos x$
+        kombinasyonlari olarak ortaya cikar.
+  \item Sag tarafta $x^n, e^{ax}, \sin bx, \cos bx$ gibi fonksiyonlar varsa
+        ozel cozum tahminleri dogrudan bu form uzerinden yapilir.
+\end{itemize}
+
+\subsection{Grafikler ve Temel Sekiller}
+
+\begin{itemize}[leftmargin=*]
+  \item Polinomlar genel olarak \emph{puruzsuz} (her yerde turevli) eg riler verir.
+  \item $e^x$ her zaman pozitiftir ve $x$ arttikca hizla artar.
+  \item $\ln x$ yalnizca $x>0$ icin tanimlidir ve yavas artan bir fonksiyondur.
+  \item $\sin x$ ve $\cos x$ periyod ik ve genligi sinirli fonksiyonlardir.
+\end{itemize}
+
+Bu sekilleri kafanda canlandirabilmek, c ozumlerin mantikli olup olmadigini
+kontrol etmek icin faydalidir.
+
+\subsection{Limit ve Sureklilik ile Baglanti}
+
+\begin{itemize}[leftmargin=*]
+  \item Polinomlar her yerde surekli ve turevlenebilirdir.
+  \item $e^x$, $\sin x$, $\cos x$ gibi temel fonksiyonlar da ayni ozellige sahiptir.
+  \item $\ln x$ yalnizca $x>0$ icin tanimli oldugundan, $x \to 0^+$ davranisi
+        (limit) onem kazanir.
+\end{itemize}
+
+\paragraph{Ders icin mesaj.}
+Bu bolumdeki kavramlar, diferansiyel denklemlerin \emph{on yuzu} gibidir:
+karakteristik denklemler, temel cozum tipleri ve cozumun buyuk $x$'lerdeki
+veya belirli noktalardaki davranisi icin bu fonksiyonlara hakim olmak gerekir.
+
+\section*{Polinom Ornekleri ve Alistirmalar}
+
+Asagidaki kisa ornekler, polinomlarla hizli islem yapma ve karakteristik
+polinom fikrini pekistirmek icin hazirlanmistir.
+
+\begin{enumerate}[leftmargin=*]
+  \item $P(x) = 3x^2 - 5x + 2$ polinomunun derecesini, bas katsayisini ve sabit terimini yaz.\\
+      extbf{Sonuc:} Derece $2$, bas katsayi $3$, sabit terim $2$.
+
+  \item $P(x) = 2x^3 - x + 1$ icin $P(0)$, $P(1)$ ve $P(-1)$ degerlerini hesapla.\\
+      extbf{Sonuc:} $P(0)=1$, $P(1)=2$, $P(-1)=3$.
+
+  \item $P(x) = x^2 - 4x + 3$ polinomunun koklerini bul ve polinomu carp anlara ayir.\\
+      extbf{Sonuc:} Kokler $x=1$ ve $x=3$; $P(x) = (x-1)(x-3)$.
+
+  \item $P(x) = x^2 + 5x + 6$ icin kokleri bul; benzer sekilde carp anlara ayir.\\
+      extbf{Sonuc:} Kokler $x=2$ ve $x=3$; $P(x) = (x-2)(x-3)$.
+
+  \item $(x+2)(x-3)$ carpimini acip bir polinom olarak yaz; derecesini belirt.\\
+      extbf{Sonuc:} $(x+2)(x-3) = x^2-x-6$, derece $2$.
+
+  \item $(2x-1)(x^2+3)$ carpimini ac ve elde ettigin polinomun katsayilarini yaz.\\
+      extbf{Sonuc:} $2x^3 - x^2 + 6x - 3$; katsayilar $2, -1, 6, -3$.
+
+  \item Uzun bolme (veya sentetik bolme) kullanarak $x^3 - 1$ polinomunu $(x-1)$'e bol.\\
+      extbf{Sonuc:} $x^3-1 = (x-1)(x^2+x+1)$.
+
+  \item $y'' - 5y' + 6y = 0$ icin karakteristik denklemi yaz ve koklerini bul.\\
+      extbf{Sonuc:} Karakteristik denklem $\lambda^2 - 5\lambda + 6 = 0$; kokler $\lambda=2$ ve $\lambda=3$.
+
+  \item Bir onceki maddede buldugun koklere gore genel cozumun $y(x)$ seklini tahmin et.\\
+      extbf{Sonuc:} $y(x) = C_1 e^{2x} + C_2 e^{3x}$.
+
+  \item $P(x) = x^4 - 1$ polinomunu carp anlara ayir: once ikinci derecedenlere, sonra
+    istersen gercek koklere kadar devam et.\\
+      extbf{Sonuc:} $x^4-1 = (x^2-1)(x^2+1) = (x-1)(x+1)(x^2+1)$; gercek kokler $x=\pm 1$.
+\end{enumerate}

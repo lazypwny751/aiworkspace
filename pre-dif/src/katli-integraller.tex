@@ -1,0 +1,188 @@
+% Katli Integraller Modul Dosyasi
+
+\section{Katli Integraller}
+
+Bu bolum, iki ve uc katli integralleri \emph{recete gibi} hatirlamak icin kisa bir ozet sunar.
+
+\subsection{Iki Katli Integral: Temel Fikir}
+
+Suresiz ve uygun sekilde duzenli bir \(f(x,y)\) fonksiyonu icin, dikdortgensel bir bolge uzerinde
+\(\iint\) su sekilde tanimlanir. \(R = [a,b] \times [c,d]\) olsun. O zaman
+\begin{align*}
+  \iint_R f(x,y)\,\mathrm{d}A
+  &= \int_a^b \int_c^d f(x,y)\,\mathrm{d}y\,\mathrm{d}x \\
+  &= \int_c^d \int_a^b f(x,y)\,\mathrm{d}x\,\mathrm{d}y.
+\end{align*}
+
+Genelde, hangi siralama kolay geliyorsa onu secersin; ama \emph{sinirlarin dogru yazilmasi} kritik nokta.
+
+\paragraph{Hesaplanmis ornek (dikdortgen bolge).}
+\[
+  \int_0^1 \int_0^2 (x + y)\,\mathrm{d}y\,\mathrm{d}x.
+\]
+Once ic integrali (\(y\) ye gore) al:
+\begin{align*}
+  \int_0^2 (x+y)\,\mathrm{d}y
+  &= \left[ xy + \tfrac{1}{2}y^2 \right]_{y=0}^{y=2}
+   = 2x + 2.
+\end{align*}
+Sonra dis integrali (\(x\) e gore) al:
+\begin{align*}
+  \int_0^1 (2x+2)\,\mathrm{d}x
+  &= \left[ x^2 + 2x \right]_0^1 = 1 + 2 = 3.
+\end{align*}
+Yani iki katli integralin sonucu \(3\)'tur.
+
+\subsection{Dikdortgen Olmayan Bolgeler}
+
+Pratikte siklikla asagidaki tip bolgelerle karsilasirsin:
+\begin{itemize}
+  \item \(D = \{(x,y) : a \le x \le b,\ g_1(x) \le y \le g_2(x)\}\)
+  \item \(D = \{(x,y) : c \le y \le d,\ h_1(y) \le x \le h_2(y)\}\)
+\end{itemize}
+
+Ilk tip icin
+\[
+  \iint_D f(x,y)\,\mathrm{d}A = \int_a^b \left( \int_{g_1(x)}^{g_2(x)} f(x,y)\,\mathrm{d}y \right)\mathrm{d}x,
+\]
+ikinci tip icin benzer sekilde once \(x\), sonra \(y\) uzerinden integral alirsin.
+
+\paragraph{Pratik recete.}
+\begin{enumerate}[label=\arabic*)]
+  \item Bolgeyi mutlaka kabaca da olsa ciz.
+  \item \(x\) veya \(y\)'ye gore bir \emph{kesit} al: alt ve ust sinir fonksiyonlarini netlestir.
+  \item Integral siralamasini bu kesite gore yaz (\(y\) icte, \(x\) diste ya da tam tersi).
+\end{enumerate}
+
+\subsection{Koordinat Donusumleri (Ozet)}
+
+Bazi katli integraller, uygun bir koordinat donusumu ile cok daha kolay hale gelir.
+En temel ornek \textbf{polar (kutupsal) koordinatlar}dir.
+
+\subsubsection*{Polar koordinatlar}
+
+\[
+  x = r \cos\theta, \qquad y = r \sin\theta.
+\]
+
+Bu donusumde alan elemani
+\[
+  \mathrm{d}A = r\,\mathrm{d}r\,\mathrm{d}\theta
+\]
+seklinde gelir; yani integrale ekstra bir \(r\) carpani eklenir.
+Genel form:
+\[
+  \iint_D f(x,y)\,\mathrm{d}A
+  = \int_{\theta_1}^{\theta_2} \int_{r_1(\theta)}^{r_2(\theta)}
+      f(r\cos\theta, r\sin\theta)\, r\,\mathrm{d}r\,\mathrm{d}\theta.
+\]
+
+Daire, disk, halka gibi dairesel simetrili bolgelerde polar koordinat secimi neredeyse her zaman isin kolaylastirir.
+
+\paragraph{Hesaplanmis ornek (disk uzerinde integral).}
+
+\(D\), merkezde yaricapi 1 olan birim disk olsun: \(x^2 + y^2 \le 1\). \(f(x,y)=x^2 + y^2\)
+icin
+\[
+  \iint_D (x^2 + y^2)\,\mathrm{d}A
+\]
+degerini hesaplayalim.
+
+Polar koordinatlara gecersek \(x^2 + y^2 = r^2\) ve \(\mathrm{d}A = r\,\mathrm{d}r\,\mathrm{d}\theta\) oldugundan,
+bolge \(0 \le r \le 1\), \(0 \le \theta \le 2\pi\) ile tarif edilir:
+\begin{align*}
+  \iint_D (x^2 + y^2)\,\mathrm{d}A
+  &= \int_0^{2\pi} \int_0^1 r^2 \cdot r\,\mathrm{d}r\,\mathrm{d}\theta \\
+  &= \int_0^{2\pi} \int_0^1 r^3\,\mathrm{d}r\,\mathrm{d}\theta \\
+  &= \int_0^{2\pi} \left[ \tfrac{1}{4} r^4 \right]_0^1 \mathrm{d}\theta \\
+  &= \int_0^{2\pi} \tfrac{1}{4}\,\mathrm{d}\theta \\
+  &= \tfrac{1}{4} \cdot 2\pi = \frac{\pi}{2}.
+\end{align*}
+
+\subsection{Uc Katli Integraller}
+
+Uc degiskenli bir \(f(x,y,z)\) fonksiyonu icin
+\[
+  \iiint_E f(x,y,z)\,\mathrm{d}V
+\]
+ifadesi, hacim uzerinde integral anlamina gelir. Dikdortgensel bir bolge icin
+\[
+  E = [a,b] \times [c,d] \times [e,f]
+\]
+oldugunda, integral ic ice uc tekli integral seklinde yazilir:
+\[
+  \iiint_E f(x,y,z)\,\mathrm{d}V
+  = \int_a^b \int_c^d \int_e^f f(x,y,z)\,\mathrm{d}z\,\mathrm{d}y\,\mathrm{d}x,
+\]
+veya degisken siralamasi ihtiyaca gore degistirilebilir.
+
+\subsection{Diferansiyel Denklemlerle Baglanti}
+
+Baslangic diferansiyel denklemleri dersinde katli integraller cok sik sorulmayabilir;
+ancak daha ileri konularda ve fiziksel modellere gecince:
+\begin{itemize}
+  \item Hacim/alan hesaplari,
+  \item Yogunluk fonksiyonu ile \emph{toplam kutle},
+  \item Ortalama deger hesaplari
+\end{itemize}
+hep katli integral fikrine dayanir.
+
+Ote yandan, PDE (kismen diferansiyel denklemler) tarafinda sinir deger problemleri,
+enerji/isi korunumu gibi konulara girdiginde, bu sayfaya geri donup
+\emph{"bolge uzerinde integral nasil yaziliyordu"} diye bakmak isini kolaylastirir.
+
+\section*{Katli Integral Ornekleri ve Alistirmalar}
+
+Asagidaki ornekler, iki katli ve uc katli integrallerin kurulum ve hesaplamasini
+pratik etmen icin hazirlanmistir.
+
+\begin{enumerate}[leftmargin=*]
+  \item $\displaystyle \int_0^1 \int_0^1 (x + 2y)\,\mathrm{d}y\,\mathrm{d}x$ integralini hesapla.\\
+        	extbf{Sonuc:} Ic integral $\left[xy + y^2\right]_0^1 = x+1$;
+        dis integral $\int_0^1 (x+1)\,dx = \left[\tfrac{x^2}{2} + x\right]_0^1 = \tfrac{3}{2}$.
+
+  \item $\displaystyle \int_0^2 \int_0^1 (3x - y)\,\mathrm{d}x\,\mathrm{d}y$ icin once ic, sonra dis
+    integrali alarak sonucu bul.\\
+        	extbf{Sonuc:} Ic integral $\left[\tfrac{3}{2}x^2 - yx\right]_0^2 = 6-2y$;
+        dis integral $\int_0^1 (6-2y)\,dy = [6y - y^2]_0^1 = 5$.
+
+  \item $\displaystyle \int_0^1 \int_0^2 (x^2 + y)\,\mathrm{d}y\,\mathrm{d}x$ integralini hesaplarken,
+    ister $y$'ye gore ister $x$'e gore once integre etmeyi dene (sonuc ayni olacak).\\
+        	extbf{Sonuc:} $\displaystyle \int_0^1 \left[x^2 y + \tfrac{y^2}{2}\right]_0^2 dx = \int_0^1 (2x^2 + 2) dx = \left[\tfrac{2}{3}x^3 + 2x\right]_0^1 = \tfrac{8}{3}$.
+
+  \item $D = [0,1] \times [0,3]$ icin $\displaystyle \iint_D (2x + y)\,\mathrm{d}A$ integralini
+    acik integral seklinde yaz ve hesapla.\\
+        	extbf{Sonuc:} $\displaystyle \int_0^1 \int_0^3 (2x+y)\,dy\,dx = \int_0^1 (6x+\tfrac{9}{2}) dx
+        = \left[3x^2 + \tfrac{9}{2}x\right]_0^1 = \tfrac{15}{2}$.
+
+  \item $D = \{(x,y) : 0 \le x \le 1,\ x \le y \le 1\}$ bolgesi icin
+    $\displaystyle \iint_D y\,\mathrm{d}A$ integralini once $y$ sonra $x$ uzerinden yaz.\\
+            extbf{Sonuc:} $\displaystyle \int_0^1 \int_x^1 y\,dy\,dx = \int_0^1 \left[\tfrac{y^2}{2}\right]_x^1 dx
+        = \int_0^1 \left(\tfrac{1}{2} - \tfrac{x^2}{2}\right) dx = \left[\tfrac{x}{2} - \tfrac{x^3}{6}\right]_0^1 = \tfrac{1}{3}$.
+
+  \item Yukaridaki $D$ bolgesi icin ayni integrali bu kez once $x$, sonra $y$ uzerinden
+    yazmayi dene (limitleri degisken fonksiyonlar seklinde ifade et).\\
+          extbf{Sonuc:} $D$ icin $0 \le y \le 1$, $0 \le x \le y$; integral $\displaystyle \int_0^1 \int_0^y y\,dx\,dy
+  = \int_0^1 y^2 \,dy = \left[\tfrac{y^3}{3}\right]_0^1 = \tfrac{1}{3}$ (ayni sonuc).
+
+  \item Birim kare $[0,1]\times[0,1]$ uzerinde $f(x,y)=x^2y$ icin ortalama deger
+    $\displaystyle f_{ort} = \frac{1}{\text{alan}} \iint f\,\mathrm{d}A$ formuluyle hesapla.\\
+          extbf{Sonuc:} Alan 1 oldugu icin $f_{ort} = \displaystyle \int_0^1\int_0^1 x^2 y\,dy\,dx
+  = \int_0^1 x^2 \left[\tfrac{y^2}{2}\right]_0^1 dx = \int_0^1 \tfrac{x^2}{2} \,dx = \tfrac{1}{6}$.
+
+  \item $E = [0,1]\times[0,1]\times[0,1]$ icin
+    $\displaystyle \iiint_E (x + y + z)\,\mathrm{d}V$ hacim integralini hesapla.\\
+          extbf{Sonuc:} Ayrilabilir: $\displaystyle \iiint_E (x+y+z)\,dV = \int_0^1 x\,dx + \int_0^1 y\,dy + \int_0^1 z\,dz
+  = 3 \cdot \tfrac{1}{2} = \tfrac{3}{2}$.
+
+  \item Polar koordinatlara gecerek, yaricapi 2 olan diskte
+    $\displaystyle \iint_D x^2 \,\mathrm{d}A$ integralini kur (hesaplamayi istersen tam
+    yap, istersen kurulmus sekilde birak).\\
+          extbf{Sonuc:} $x = r\cos\theta$, $\mathrm{d}A = r\,dr\,d\theta$; integrand $x^2 = r^2 \cos^2\theta$;
+  integral $\displaystyle \int_0^{2\pi} \int_0^2 r^3 \cos^2\theta\,dr\,d\theta$ seklinde yazilir.
+
+  \item Yine polar koordinatlarla, $\displaystyle \iint_D 1\,\mathrm{d}A$ integralinin aslinda
+    bolgenin alanini verdigini hatirla ve yaricapi $R$ olan bir diskin alanini bu sekilde bul.\\
+          extbf{Sonuc:} $\displaystyle \int_0^{2\pi} \int_0^R 1\cdot r\,dr\,d\theta = \int_0^{2\pi} \left[\tfrac{r^2}{2}\right]_0^R d\theta
+  = \int_0^{2\pi} \tfrac{R^2}{2} \,d\theta = \pi R^2$.
+\end{enumerate}

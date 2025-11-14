@@ -1,0 +1,151 @@
+% Temel Fonksiyonlar ve Grafik Sezgisi Modul Dosyasi
+
+\section{Temel Fonksiyonlar ve Grafik Sezgisi}
+
+Bu bolumde, diferansiyel denklemler dersinde surekli karsilasacagin \emph{temel fonksiyon tipleri}
+ve bunlarin grafik/sezgi acisindan davranislari biraz daha detayli ozetlenmistir. Polinomlar bir
+onceki bolumde ele alindigi icin, burada daha cok diger sik fonksiyon ailelerine odaklaniyoruz.
+
+\subsection{Us, Kok ve Rasyonel Fonksiyonlar}
+
+\paragraph{Us fonksiyonlari.} \(f(x) = x^n\) seklindeki fonksiyonlar icin:
+\begin{itemize}
+  \item \(n\) tek ise grafik orijinden gecen S-sekilli (\(x^3\) gibi) veya diagonal (\(x\) gibi) bir sekil cizer.
+  \item \(n\) cift ise grafik orijinden gecmez, genelde \(y\)-ekseni etrafinda simetriktir (\(x^2, x^4\) gibi).
+\end{itemize}
+
+\paragraph{Mini ornek.} \(f(x)=x^2\) icin \(f(-1)=1\), \(f(0)=0\), \(f(1)=1\); grafik yukari acilan bir paraboldu r.
+\(f(x)=x^3\) icin \(f(-1)=-1\), \(f(0)=0\), \(f(1)=1\); grafik orijinden gecen S-seklindedir.
+
+\paragraph{Kok fonksiyonlari.} \(f(x) = \sqrt[m]{x}\) gibi fonksiyonlar, genelde sadece belli
+bir aralikta tanimlidir (mesela \(\sqrt{x}\) icin \(x \ge 0\)) ve grafik orijinden cikip yavas
+sekilde artar.
+
+\paragraph{Rasyonel fonksiyonlar.} \(f(x) = \dfrac{P(x)}{Q(x)}\) bicimindeki fonksiyonlar, payda
+sifir oldugunda tanimsizdir ve bu noktalarda \emph{dikey asimptot} ortaya cikabilir.
+Pay ve payda derecelerine gore sonsuzdaki davranis (yatay/asimptotik davranis) belirlenir.
+
+\paragraph{Mini ornek.} \(f(x)=\dfrac{1}{x-1}\) icin \(x=1\) noktasinda tanimsizlik ve dikey asimptot vardir;
+\(x\to 1^-\) icin \(f(x)\to -\infty\), \(x\to 1^+\) icin \(f(x)\to +\infty\).
+
+\subsection{Ustel ve Logaritmik Fonksiyonlar}
+
+\paragraph{Ustel fonksiyonlar.} \(f(x) = a^x\) (\(a>0, a\neq 1\)) icin:
+\begin{itemize}
+  \item Tanım araligi genelde \(\mathbb{R}\), deger araligi \((0,\infty)\) dir.
+  \item \(a>1\) ise grafik artan; \(0<a<1\) ise azalan seklindedir.
+  \item Diferansiyel denklemlerde, \(e^{kx}\) turu cozumler cok sik karsina cikar.
+\end{itemize}
+
+\paragraph{Mini ornek.} \(f(x) = 2^x\) icin \(f(0)=1\), \(f(1)=2\), \(f(2)=4\); \(x\to -\infty\) giderken \(f(x)\to 0\).
+
+\paragraph{Logaritmik fonksiyonlar.} \(f(x) = \log_a x\) icin:
+\begin{itemize}
+  \item Tanım araligi \((0,\infty)\), deger araligi \(\mathbb{R}\) dir.
+  \item \(a>1\) ise artan, \(0<a<1\) ise azalan fonksiyondur.
+  \item \(y = \log_a x\), \(y = a^x\)'in ters fonksiyonudur.
+\end{itemize}
+
+\paragraph{Mini ornek.} \(f(x)=\ln x\) icin \(f(1)=0\), \(f(e)=1\) ve \(x\to 0^+\) giderken \(f(x)\to -\infty\).
+
+\subsection{Trigonometrik Fonksiyonlar}
+
+\paragraph{Temel trig fonksiyonlari.} \(\sin x, \cos x, \tan x\) ve bunlarin turevleri,
+cozduklerin diferansiyel denklemlerde sik cikar:
+\begin{itemize}
+  \item \(\sin x\) ve \(\cos x\): periyodik, deger araligi \([-1,1]\).
+  \item \(\tan x\): periyodik, dikey asimptotlari olan bir fonksiyondur.
+  \item \(\sin x\)'in turevi \(\cos x\), \(\cos x\)'in turevi \(-\sin x\)'tir.
+\end{itemize}
+
+\paragraph{Mini ornek.} \(f(x)=\sin x\) icin \(f(0)=0\), \(f(\tfrac{\pi}{2})=1\), \(f(\pi)=0\).
+Bir tam periyot uzunlugu \(2\pi\)'dir.
+
+Bu fonksiyonlar, salınım (osilasyon) iceren cozumlerde (mesela ikinci mertebe sabit katsayili
+lineer ODE'lerde) dogrudan karsina cikar.
+
+\subsection{Grafik ve Sezgi Odakli Notlar}
+
+Farkli fonksiyon tiplerinin grafiklerini kafanda netlestirmek, hem limit/turev yorumunu
+hem de diferansiyel denklem cozumlerinin davranisini anlamani cok kolaylastirir.
+
+\begin{itemize}
+  \item \textbf{Artan/azalan}: Grafik sag tarafa giderken yukari mi cikiyor, asagi mi iniyor?
+  \item \textbf{Konveks/konkav}: Grafikteki "cukur" ve "tepe" hissi, ikinci turev isaretine baglidir.
+  \item \textbf{Asimptotlar}: Rasyonel veya logaritmik fonksiyonlarda, grafigin
+        yaklastigi ama hic dokunmadigi dogrular var mi?
+\end{itemize}
+
+\paragraph{Hizli tekrar icin mini tablo.}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+  \hline
+  Fonksiyon & Turev & Temel ozellik & Not \\
+  \hline
+  $x^n$ & $nx^{n-1}$ & polinom, her yerde duzgun & $n$ tamsayi \\
+  $e^x$ & $e^x$ & hep pozitif, hizla artan & cozumlerde cok sik \\
+  $\ln x$ & $1/x$ & $x>0$, yavas artan & $x\to 0^+$ icin $-\infty$ \\
+  $\sin x$ & $\cos x$ & periyodik, sinirli & osilasyon \\
+  $\cos x$ & $-\sin x$ & periyodik, sinirli & faz kaymali sin \\
+  \hline
+\end{tabular}
+\end{center}
+
+Bu bolumu, polinomlar ve limit-sureklilik bolumleri ile birlikte dusunebilirsin:
+\begin{itemize}
+  \item Once \emph{hangi fonksiyonla ugrastigini} tanimla (polinom, us, rasyonel, trig vs.).
+  \item Sonra limit/turev/integral sorusunda buna gore davranisi yorumla.
+  \item Son olarak, diferansiyel denklem cozumlerinin de bu temel fonksiyonlardan kombinasyonlar
+        oldugunu hatirla.
+\end{itemize}
+
+\section*{Temel Fonksiyon Ornekleri ve Alistirmalar}
+
+Aşağıdaki kisa sorular, farkli fonksiyon tiplerinin tanim kumesi, degerleri ve temel
+grafik davranisini pekistirmek icin hazirlanmistir.
+
+\begin{enumerate}[leftmargin=*]
+  \item $f(x) = 2x^2 - 3x + 1$ icin $f(-1)$, $f(0)$ ve $f(2)$ degerlerini hesapla.\\
+		extbf{Sonuc:} $f(-1)=2\cdot 1+3+1=6$, $f(0)=1$, $f(2)=2\cdot 4-6+1=3$.
+
+  \item $f(x) = \dfrac{1}{x-2}$ fonksiyonunun tanim kumesini ve $x=2$ yakinindaki
+    davranisini (limitleri) yorumla.\\
+		extbf{Sonuc:} Tanim kumesi $x\neq 2$; $x\to 2^-$ icin $f(x)\to -\infty$, $x\to 2^+$ icin $f(x)\to +\infty$.
+
+  \item $f(x) = 2^x$ icin $f(0)$, $f(1)$, $f(2)$ ve $f(-1)$ degerlerini bul; $x\to -\infty$
+    giderken fonksiyonun neye yaklastigini soyle.\\
+		extbf{Sonuc:} $f(0)=1$, $f(1)=2$, $f(2)=4$, $f(-1)=1/2$; $x\to -\infty$ icin $f(x)\to 0$.
+
+  \item $f(x) = 3^x$ fonksiyonunun $x$ arttikca nasil davrandigini kisaca acikla (artan/azalan,
+    alt siniri var mi?).\\
+		extbf{Sonuc:} $3^x$ artan bir fonksiyondur, alt siniri 0'dir (asla 0 olmaz, 0'a yaklasir).
+
+  \item $f(x) = \ln x$ fonksiyonunun tanim kumesini, $x\to 0^+$ ve $x\to \infty$ icin
+    limit davranisini belirt.\\
+		extbf{Sonuc:} Tanim kumesi $(0,\infty)$; $x\to 0^+$ icin $\ln x\to -\infty$, $x\to \infty$ icin $\ln x\to \infty$.
+
+  \item $f(x) = \sqrt{x-1}$ icin tanim kumesini bul ve $x$ karsilikli birkac deger icin
+    fonksiyon degerlerini hesapla (mesela $x=1,2,5$).\\
+		extbf{Sonuc:} Tanim kumesi $x\ge 1$; $f(1)=0$, $f(2)=1$, $f(5)=2$.
+
+  \item $f(x) = \sin x$ icin $x=0, \tfrac{\pi}{2}, \pi, \tfrac{3\pi}{2}$ noktalarinda
+    degerleri bul ve bir periyot boyunca grafigin nasil gectigini tarif et.\\
+		extbf{Sonuc:} $f(0)=0$, $f(\tfrac{\pi}{2})=1$, $f(\pi)=0$, $f(\tfrac{3\pi}{2})=-1$;
+        grafik bir periyotta 0'dan 1'e cikip tekrar 0'a iner ve -1'den yine 0'a doner.
+
+  \item $f(x) = \cos x$ icin bir periyot icerisinde maksimum, minimum ve sifir oldugu
+    noktalarin bir listesini yap.\\
+		extbf{Sonuc:} Bir periyotta $[0,2\pi]$ icin: maksimum $1$ degeri $x=0,2\pi$'de;
+        minimum $-1$ degeri $x=\pi$'de; sifir oldugu noktalar $x=\tfrac{\pi}{2},\tfrac{3\pi}{2}$.
+
+  \item $f(x) = \tan x$ fonksiyonunun tanimsiz oldugu noktalar icin genel bir formul yaz
+    (kacinci katlarin \(\tfrac{\pi}{2}\) oldugunu belirt) ve bu noktalarda grafigin
+    nasil davrandigini acikla.\\
+		extbf{Sonuc:} Tanim siz oldugu noktalar $x = \tfrac{\pi}{2} + k\pi$ (her tamsayi $k$ icin);
+        bu noktalarda dikey asimptot vardir, grafik bir tarafta $+\infty$, diger tarafta $-\infty$'ye gider.
+
+  \item Ayni koordinat duzlemine kabaca $y = e^x$ ve $y = \ln x$ grafigini cizdigini hayal et:
+    hangi fonksiyon hangi bolgede daha buyuk, nerede kesisiyorlar (yaklasik)?\\
+		extbf{Sonuc:} $y=e^x$ her zaman $y=\ln x$'ten daha buyuktur; bunlar aslinda ters fonksiyon
+        ciftidir ve $y=x$ dogrusu uzerinde ayna simetrisine sahiptir.
+\end{enumerate}

@@ -1,0 +1,69 @@
+% Diferansiyel Denklemler Icin Moduler Notlar
+% Ana dosya: src/main.tex
+
+\documentclass[12pt,a4paper]{article}
+
+% Ortak stil (paketler, dil, sayfa ayarlari, komutlar) — template burada
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{turkish}
+\setotherlanguage{english}
+\setmainfont{Latin Modern Roman}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+% SIK KULLANILAN KOMUTLAR
+\newcommand{\dint}{\,\mathrm{d}}
+
+\title{Diferansiyel Denklemler Icin Temel Notlar}
+\author{Ozet Not Seti}
+\date{Kasim 2025}
+
+\begin{document}
+
+\maketitle
+
+\section*{Icindekiler}
+\addcontentsline{toc}{section}{Icindekiler}
+\tableofcontents
+\clearpage
+
+% Giris
+\section*{Giris}
+\addcontentsline{toc}{section}{Giris}
+Bu moduler yapida, diferansiyel denklemler dersinde sik kullanilan temel kavramlar
+ayri dosyalar halinde toparlanmistir. Her modul, \emph{kural + ornek} seklinde
+kisa ve islevsel bir ozet sunar.
+
+% Buradan itibaren konu bazli dosyalari cekiyoruz
+
+% 1) Polinomlar ve temel fonksiyon tipleri
+\input{src/polinomlar}
+
+% 2) Temel fonksiyon tipleri ve grafik/sezgi
+\input{src/fonksiyonlar}
+
+% 3) Limit ve sureklilik
+\input{src/limit-sureklilik}
+
+% 4) Turev ve integral + temel ODE ornekleri
+\input{src/turev-integral}
+
+% 5) Katli integraller
+\input{src/katli-integraller}
+
+% 6) Diferansiyel denklemler ozet
+\input{src/diferansiyel-denklemler}
+
+% Ileride eklenecek diger bolumler icin (polinomlar, limit, katli integral, ODE ozetleri)
+% ornegin:
+% \input{polinomlar}
+% \input{limit-sureklilik}
+% \input{katli-integraller}
+% \input{diferansiyel-denklemler}
+
+\end{document}

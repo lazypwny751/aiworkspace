@@ -1,0 +1,46 @@
+# LaTeX auxiliary files
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+
+# Intermediate documents
+*.dvi
+*.xdv
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+
+# Generated PDFs
+*.pdf
+
+# Latexmk and other tools
+*.fdb_latexmk
+*.synctex.gz(busy)
+*.nav
+*.snm
+*.vrb
+
+# Editor/OS files
+*~
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Build artifacts in src/
+src/*.aux
+src/*.log
+src/*.out
+src/*.toc

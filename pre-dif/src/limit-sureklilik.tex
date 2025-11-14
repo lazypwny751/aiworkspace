@@ -1,0 +1,196 @@
+% Limit ve Sureklilik
+
+\section{Limit ve Sureklilik}
+
+Bu bolum, turev ve diferansiyel denklemler oncesi analiz altyapisini hizlica
+hatirlatmak icin ozet niteligindedir.
+
+\subsection{Limit Fikri (Gayriresmi)}
+
+Bir $f(x)$ fonksiyonunun $x \to a$ iken limiti $L$ ise, asagidaki orneklerle
+bu fikri pekistirebilirsin:
+
+\begin{itemize}[leftmargin=*]
+  \item Basit cebirsel fonksiyonlar icin limit genellikle dogrudan yerine koyma ile bulunur.
+  \item Paydada $0$ durumu varsa sadeleştirme veya daha ince analiz gerekir.
+\end{itemize}
+
+Ardindan kisa alistirmalar:
+
+\begin{enumerate}[leftmargin=*]
+  \item $x\to 2$ icin $f(x) = 3x+1$ fonksiyonunun limitini hesapla.\\
+      extbf{Sonuc:} $\lim\limits_{x\to 2} (3x+1) = 3\cdot 2+1 = 7$.
+  \item $x\to 1$ icin $f(x) = x^2 - 1$ fonksiyonunun limitini bul ve fonksiyonun
+    $x=1$'de surekli olup olmadigini yorumla.\\
+      extbf{Sonuc:} $\lim\limits_{x\to 1} (x^2-1) = 0$ ve $f(1)=0$ oldugu icin fonksiyon $x=1$'de sureklidir.
+  \item $x\to 0$ icin $f(x) = \dfrac{\sin x}{x}$ fonksiyonunun limitini hesapla.\\
+      extbf{Sonuc:} $\displaystyle \lim_{x\to 0} \dfrac{\sin x}{x} = 1$.
+  \item $x\to 0$ icin $f(x) = \dfrac{1-\cos x}{x^2}$ fonksiyonunun limitini bul.\\
+      extbf{Sonuc:} $\displaystyle \lim_{x\to 0} \dfrac{1-\cos x}{x^2} = \dfrac{1}{2}$.
+  \item $x\to \infty$ icin $f(x) = \dfrac{2x^2+1}{x^2+3}$ fonksiyonunun limitini hesapla.\\
+      extbf{Sonuc:} En baskin terimler oranindan $\displaystyle \lim_{x\to \infty} \dfrac{2x^2+1}{x^2+3} = 2$.
+  \item $x\to \infty$ icin $f(x) = \dfrac{3x-5}{2x+7}$ fonksiyonunun limitini bul.\\
+      extbf{Sonuc:} $\displaystyle \lim_{x\to \infty} \dfrac{3x-5}{2x+7} = \dfrac{3}{2}$.
+  \item $x\to 0$ icin $f(x) = |x|$ fonksiyonunun limitini incele; soldan ve sagdan limitleri
+    karsilastir.\\
+      extbf{Sonuc:} $\lim\limits_{x\to 0^-} |x| = 0$, $\lim\limits_{x\to 0^+} |x| = 0$ ve $f(0)=0$; limit vardir ve fonksiyon $0$'da sureklidir.
+  \item $f(x) = \begin{cases}
+  x^2, & x<1, \\
+  2x-1, & x\ge 1
+    \end{cases}$ icin $x\to 1$ limitini ve $x=1$'de surekliligini incele.\\
+      extbf{Sonuc:} Soldan limit $1^2=1$, sagdan limit $2\cdot 1-1=1$ ve $f(1)=1$;
+    dolayisiyla $x=1$'de limit vardir ve fonksiyon sureklidir.
+  \item $f(x) = \dfrac{x^2-1}{x-1}$ fonksiyonu icin $x\to 1$ limitini hesapla ve fonksiyonun
+    $x=1$'de tanimli olup olmadigini yorumla.\\
+      extbf{Sonuc:} $\dfrac{x^2-1}{x-1} = x+1$ (\(x\neq 1\) icin), dolayisiyla $\lim\limits_{x\to 1} f(x) = 2$;
+    fakat $x=1$ noktasi tanim kumesinde degildir, burada kaldirilabilir bir sureksizlik vardir.
+  \item $f(x) = \begin{cases}
+  x+1, & x\ne 0, \\
+  0, & x=0
+    \end{cases}$ fonksiyonu icin $x\to 0$ limitini ve $x=0$'de surekliligini incele.\\
+      extbf{Sonuc:} $x\to 0$ icin $x+1\to 1$, yani $\lim\limits_{x\to 0} f(x)=1$;
+    ancak $f(0)=0$ oldugu icin fonksiyon $0$'da sureksizdir.
+\end{enumerate}
+
+\paragraph{Ders icin mesaj.}
+Turev tanimi limit uzerinden yapildigi icin, bu kurallari refleks haline getirmek
+hesaplamalari hizlandirir.
+
+\paragraph{Mini ornekler.}
+\begin{align*}
+  \lim_{x \to 2} (3x^2 - x)
+  &= 3\cdot 2^2 - 2 = 12 - 2 = 10, \\
+  \lim_{x \to 1} \frac{x^2 - 1}{x-1}
+  &= \lim_{x \to 1} (x+1) = 2.
+\end{align*}
+
+\subsection{Tek Tarafli ve Sonsuzda Limit}
+
+\begin{itemize}[leftmargin=*]
+  \item Sag limit: $x \to a^+$, $x$ degerleri $a$'ya \emph{sagdan} yaklasir.
+  \item Sol limit: $x \to a^-$, $x$ degerleri $a$'ya \emph{soldan} yaklasir.
+  \item Sag ve sol limit esitse ortak limit vardir.
+\end{itemize}
+
+Sonsuzda limitler:
+\[
+\lim_{x \to \infty} f(x),\qquad \lim_{x \to -\infty} f(x)
+\]
+fonksiyonun uc noktalardaki davranisini verir.
+
+\paragraph{Ornek.}
+\[
+\lim_{x \to \infty} \frac{1}{x} = 0.
+\]
+
+\paragraph{Mini ornek.}
+\[
+  \lim_{x \to \infty} \frac{2x^2 + 1}{x^2 - 3}
+  = \lim_{x \to \infty} \frac{2 + 1/x^2}{1 - 3/x^2} = 2.
+\]
+
+Bu tur dusunceler, ODE cozumlerinin uzun vadede neye yaklastigini (kararlilik,
+vanis etme, salinim devam ediyor mu vb.) yorumlarken ise yarar.
+
+\subsection{Sureklilik}
+
+Bir $f$ fonksiyonu $x=a$ noktasinda \emph{s\"urekli} ise:
+\begin{enumerate}[leftmargin=*]
+  \item $f(a)$ tanimlidir,
+  \item $\displaystyle \lim_{x \to a} f(x)$ vardir,
+  \item $\displaystyle \lim_{x \to a} f(x) = f(a)$ saglanir.
+\end{enumerate}
+
+S\"ureksizlik turleri:
+\begin{itemize}[leftmargin=*]
+  \item atlamali s\"ureksizlik,
+  \item sonsuz s\"ureksizlik,
+  \item tanimsiz nokta vb.
+\end{itemize}
+
+\paragraph{Mini ornekler.}
+\begin{itemize}[leftmargin=*]
+  \item $f(x) = \dfrac{1}{x}$ icin $x=0$'da sonsuz s"ureksizlik (dikey asimptot) vardir.
+  \item $g(x) = \begin{cases}
+          1, & x<0, \\
+          2, & x\ge 0
+        \end{cases}$ icin $x=0$'da atlamali s"ureksizlik vardir.
+\end{itemize}
+
+Polinomlar, ustel fonksiyonlar ve $\sin, \cos$ gibi temel fonksiyonlar
+her yerde s\"ureklidir.
+
+\subsection{Turevlenebilirlik ve Sureklilik}
+
+Bir nokta icin:
+\begin{itemize}[leftmargin=*]
+  \item $f$ o noktada \emph{turevlenebilir} ise, o noktada mutlaka s\"ureklidir.
+  \item Tersi her zaman dogru degildir (ornegin $|x|$ fonksiyonunda $x=0$).
+\end{itemize}
+
+Turev tanimi:
+\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}.
+\]
+
+Bu tanimin temelinde hep limit kurallari yatar; pratikte formulleri hazir
+kullansan bile, arkadaki teori buraya dayanir.
+
+\subsection{Diferansiyel Denklemlerle Baglanti}
+
+\begin{itemize}[leftmargin=*]
+  \item Diferansiyel denklemlerde cozumler genellikle turev ve s\"ureklilik
+        varsayimlari uzerine kurulur.
+  \item Cozum fonksiyonunun tanim araligini belirlerken limit ve s\"ureklilik
+        davranisini dikkate almalisin (ozellikle $\ln x$, kok iceren fonksiyonlar vb.).
+\end{itemize}
+
+Bu bolumdeki fikirler, sinavda uzun ispatlar seklinde sorulmasa bile, hangi
+fonksiyonlarla rahat calisabilecegini ve nerede dikkatli olman gerektigini
+belirlemede sana temel bir sezgi kazandirir.
+
+\section*{Limit ve Sureklilik Ornekleri}
+
+Kisa alistirmalarla limit ve sureklilik kavramlarini pekistirmek icin asagidaki
+ornekleri cozebilirsin.
+
+\begin{enumerate}[leftmargin=*]
+  \item $\displaystyle \lim_{x \to 2} (x^2 + 3x - 1)$ degerini hesapla.\\
+    	extbf{Sonuc:} $x=2$ yazarsan $2^2 + 3\cdot 2 - 1 = 4+6-1 = 9$.
+  \item $\displaystyle \lim_{x \to 1} \frac{x^2 - 1}{x-1}$ limitini sadeleştirerek bul.\\
+    	extbf{Sonuc:} $\dfrac{x^2-1}{x-1} = x+1$ (\(x\neq 1\) icin), bu yuzden $\lim_{x\to 1} = 2$.
+  \item $\displaystyle \lim_{x \to 0} \frac{\sin x}{x}$ icin teorik sonucu hatirla
+    (seriler veya grafik uzerinden) ve sonuclandir.\\
+      	extbf{Sonuc:} $\displaystyle \lim_{x\to 0} \frac{\sin x}{x} = 1$.
+  \item $\displaystyle \lim_{x \to \infty} \frac{3x^2 - x + 1}{x^2 + 4}$ limitini
+    pay ve paydayi $x^2$'ye bolerek hesapla.\\
+      	extbf{Sonuc:} Baskin terimlerden $\displaystyle \lim_{x\to\infty} \frac{3x^2 - x + 1}{x^2 + 4} = 3$.
+  \item $\displaystyle \lim_{x \to 0^+} \ln x$ ve $\displaystyle \lim_{x \to \infty} \ln x$
+    limitlerini yorumla.\\
+      	extbf{Sonuc:} $x\to 0^+$ icin $\ln x \to -\infty$, $x\to \infty$ icin $\ln x \to \infty$.
+  \item
+    $f(x) = \begin{cases}
+      x^2, & x<1, \\
+      2x-1, & x\ge 1
+    \end{cases}$ icin $x=1$ noktasinda sag ve sol limitleri, ayrica $f(1)$ degerini hesapla;
+    fonksiyonun bu noktada surekli olup olmadigini belirt.\\
+      	extbf{Sonuc:} Sol limit $1^2=1$, sag limit $2\cdot 1-1=1$, $f(1)=1$; bu nedenle fonksiyon $x=1$'de sureklidir.
+  \item
+    $g(x) = \dfrac{1}{x-2}$ fonksiyonu icin $x\to 2^-$ ve $x\to 2^+$ limitlerini incele;
+    bu noktada hangi turde bir sureksizlik vardir?\\
+      	extbf{Sonuc:} $x\to 2^-$ icin $g(x)\to -\infty$, $x\to 2^+$ icin $g(x)\to +\infty$;
+        bu noktada sonsuz (asil) bir sureksizlik vardir.
+  \item
+  $h(x) = \begin{cases}
+      x, & x\ne 0, \\
+      1, & x=0
+    \end{cases}$ fonksiyonu icin $x=0$'da limit ve fonksiyon degerini karsilastir;
+    surekli mi, degil mi?\\
+      	extbf{Sonuc:} $\lim_{x\to 0} h(x) = 0$, fakat $h(0)=1$; limit ve deger farkli oldugu icin $x=0$'da sureksizdir.
+  \item $\displaystyle \lim_{x \to -\infty} e^x$ ve $\displaystyle \lim_{x \to \infty} e^{-x}$
+    limitlerini hesapla; grafiksel yorum yap.\\
+      	extbf{Sonuc:} $x\to -\infty$ icin $e^x\to 0$, $x\to \infty$ icin $e^{-x}\to 0$; her iki durumda da eksene yakinlasan ama kesmeyen bir kuyruk vardir.
+  \item Bir fonksiyonun bir noktada turevlenebilir olmasi icin hangi sartin once
+    saglanmasi gerektigini (sureklilik ile iliskisi) kisa bir cumleyle acikla.\\
+      	extbf{Sonuc:} Bir noktada turevlenebilir olmak icin once o noktada surekli olmak gerekir; turevlenebilirlik surekliligi garanti eder ama tersi her zaman dogru degildir.
+\end{enumerate}
