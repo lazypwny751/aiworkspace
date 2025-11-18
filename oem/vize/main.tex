@@ -1,0 +1,843 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fontspec}
+\usepackage[turkish]{babel}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{hyperref}
+
+\geometry{top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm}
+
+\title{\textbf{Özel Elektrik Makineleri - Vize Genel Özeti}}
+\author{Ders Notları ve Slayt Özetleri}
+\date{\today}
+
+\begin{document}
+\shorthandoff{=}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\part{Kalıcı Mıknatıslı Senkron Motorlar (KMSM)}
+
+\section{Giriş ve Temel Kavramlar}
+Kalıcı Mıknatıslı Senkron Motor (KMSM) veya İngilizce adıyla Permanent Magnet Synchronous Motor (PMSM), rotorunda manyetik alan oluşturmak için sargı yerine kalıcı mıknatısların kullanıldığı bir senkron motor türüdür.
+\begin{itemize}
+    \item \textbf{Stator Yapısı:} Asenkron motorlara benzer şekilde 3 fazlı sargılar bulunur. Bu sargılara uygulanan 3 fazlı alternatif akım, stator içinde dönen bir manyetik alan oluşturur.
+    \item \textbf{Rotor Yapısı:} Rotorunda kalıcı mıknatıslar olduğu için fırça, bilezik veya harici bir DC kaynağına ihtiyaç duymaz. Bu durum bakım gereksinimini azaltır ve ömrü uzatır.
+    \item \textbf{Çalışma Prensibi:} Stator sargılarında oluşturulan döner manyetik alan, rotordaki sabit mıknatısları çeker ve iter. Rotor, bu manyetik alanı takip ederek senkron hızda ($n_s = 120f/p$) döner.
+    \item \textbf{Verim:} Rotor manyetik alanı mıknatıslar tarafından sağlandığı için rotorda bakır kaybı (I\textsuperscript{2}R) oluşmaz. Ayrıca mıknatıslanma akımı şebekeden çekilmediği için güç faktörü yüksektir.
+    \item \textbf{Dalga Şekli:} Sinüzoidal bir zıt EMK (Elektromotor Kuvvet) üretir ve sinüzoidal akımla beslenir. Bu sayede moment dalgalanması düşüktür ve sessiz çalışır.
+\end{itemize}
+
+\section{Kalıcı Mıknatıs Çeşitleri}
+KMSM'lerde kullanılan mıknatıslar performans ve maliyeti doğrudan etkiler. Mıknatıs seçimi, motorun çalışma sıcaklığına, istenen güç yoğunluğuna ve maliyet hedefine göre yapılır.
+\begin{enumerate}
+    \item \textbf{Al-Ni-Co (Alüminyum-Nikel-Kobalt):} İlk ticari mıknatıslardır. Yüksek sıcaklık dayanımı (500°C'ye kadar) vardır ve korozyona dirençlidir. Ancak manyetik enerji yoğunluğu düşüktür ve kolayca demagnetize olabilirler.
+    \item \textbf{Ferrit (Seramik):} En yaygın ve ucuz mıknatıslardır. Korozyona karşı çok dayanıklıdırlar. Ancak manyetik özellikleri (enerji yoğunluğu) düşüktür, bu yüzden yüksek performanslı motorlarda tercih edilmezler. Genellikle maliyet odaklı uygulamalarda (fanlar, pompalar) kullanılırlar.
+    \item \textbf{Sm-Co (Samaryum-Kobalt):} Nadir toprak elementidir. Yüksek enerji yoğunluğuna ve mükemmel sıcaklık kararlılığına sahiptir. Korozyona dirençlidir. Ancak çok pahalıdır ve kırılgandır. Yüksek sıcaklıkta çalışması gereken askeri ve havacılık uygulamalarında tercih edilir.
+    \item \textbf{Nd-Fe-B (Neodimyum-Demir-Bor):} Günümüzde en güçlü mıknatıslardır (Süper Mıknatıs). En yüksek enerji yoğunluğuna sahiptir, bu sayede motorlar çok kompakt yapılabilir. Ancak sıcaklık dayanımı Sm-Co'ya göre daha düşüktür (genelde 150-180°C sınırı) ve korozyona karşı kaplama (nikel, çinko vb.) gerektirir. Elektrikli araçlarda yaygın olarak kullanılır.
+\end{enumerate}
+
+\section{Rotor Yapısına Göre Sınıflandırma}
+Mıknatısların rotora yerleştirilme şekli motorun karakteristiğini, hız sınırlarını ve moment üretim yeteneğini belirler.
+
+\subsection{Yüzey Mıknatıslı (SMPMSM)}
+\begin{itemize}
+    \item Mıknatıslar rotor yüzeyine yapıştırılır.
+    \item Yapısı basittir ve maliyeti düşüktür.
+    \item Mıknatıslar merkezkaç kuvvetine karşı savunmasızdır, bu yüzden çok yüksek hızlarda tercih edilmez (kopma riski vardır, bandajlama gerekebilir).
+    \item Endüktanslar (Ld ve Lq) birbirine eşittir (Ld = Lq). Bu nedenle \textbf{Relüktans Momenti} oluşmaz, sadece mıknatıs momenti ile döner.
+\end{itemize}
+
+\subsection{Gömülü (Dâhili) Mıknatıslı (IPMSM)}
+\begin{itemize}
+    \item Mıknatıslar rotor saclarının içine açılan yuvalara gömülür.
+    \item Mekanik olarak çok sağlamdır, mıknatıslar savrulmaz, bu nedenle çok yüksek hızlara uygundur.
+    \item Ld ve Lq endüktansları farklıdır (Lq > Ld). Bu asimetri sayesinde motor, mıknatıs momentine ek olarak \textbf{Relüktans Momenti} de üretir. Bu da toplam torku ve güç yoğunluğunu artırır.
+    \item "Alan Zayıflatma" (Field Weakening) yöntemiyle nominal hızın üzerine çıkmak için çok uygundur.
+    \item Üretimi daha zordur ve maliyetlidir.
+\end{itemize}
+
+\subsection{Diğer Yapılar}
+\begin{itemize}
+    \item \textbf{Eksenel Akılı KMSM:} Mıknatıslar ve sargılar, manyetik akının mil eksenine paralel (boyuna) akacağı şekilde disk yapısında düzenlenir. Çok yüksek tork yoğunluğu sağlar ve "yassı" (pancake) motor olarak bilinir. Asansörler ve tekerlek içi motorlarda kullanılır.
+    \item \textbf{Doğrudan Hat Beslemeli (Line Start) KMSM:} Rotorunda mıknatıslara ek olarak asenkron motorlardaki gibi "sincap kafes" çubukları bulunur. Bu sayede sürücü olmadan doğrudan şebeke gerilimiyle asenkron olarak kalkınır, senkron hıza yaklaşınca mıknatıslar kilitlenir ve senkron olarak dönmeye devam eder.
+\end{itemize}
+
+\section{KMSM ile Diğer Motorların Karşılaştırılması}
+
+\subsection{KMSM vs. Asenkron Motor (İndüksiyon)}
+\begin{itemize}
+    \item \textbf{Verim:} KMSM, rotorda akım akmadığı ve bakır kaybı olmadığı için özellikle düşük yüklerde ve küçük boyutlarda çok daha verimlidir.
+    \item \textbf{Güç Yoğunluğu:} KMSM aynı boyutta daha fazla güç verir (Daha kompakt ve hafiftir).
+    \item \textbf{Güç Faktörü:} KMSM'nin güç faktörü yüksektir, şebekeden reaktif güç çekmez (hatta verebilir).
+    \item \textbf{Isınma:} Rotor ısınmadığı için yatak ömrü daha uzundur.
+    \item \textbf{Maliyet:} KMSM mıknatıs maliyeti nedeniyle daha pahalıdır.
+    \item \textbf{Kontrol:} Asenkron motor doğrudan şebekeden çalışabilir (DOL), KMSM (Line Start hariç) mutlaka sürücü (inverter) gerektirir.
+\end{itemize}
+
+\subsection{KMSM vs. Fırçasız Doğru Akım (BLDC)}
+Her ikisi de kalıcı mıknatıslıdır ve fırçasızdır ancak:
+\begin{itemize}
+    \item \textbf{Zıt EMK:} KMSM Sinüzoidal, BLDC Trapezoidal (Yamuk) dalga şekli üretir.
+    \item \textbf{Besleme Akımı:} KMSM Sinüzoidal (AC), BLDC Kare dalga (DC) akımla sürülür.
+    \item \textbf{Moment:} KMSM'de moment dalgalanması (ripple) çok düşüktür, bu yüzden hassas servo uygulamalarında tercih edilir. BLDC'de moment dalgalanması daha fazladır.
+    \item \textbf{Sensör:} BLDC genellikle ucuz Hall sensörleri ile, KMSM ise hassas Encoder veya Resolver ile kontrol edilir.
+\end{itemize}
+
+\section{Avantajlar ve Dezavantajlar}
+\textbf{Avantajlar:}
+\begin{itemize}
+    \item \textbf{Yüksek Verim:} Enerji tasarrufu sağlar (IE4, IE5 verim sınıfları).
+    \item \textbf{Yüksek Tork/Atalet Oranı:} Çok hızlı hızlanıp durabilir (Dinamik tepkisi yüksektir).
+    \item \textbf{Kompakt Yapı:} Hafif ve az yer kaplar.
+    \item \textbf{Sessiz Çalışma:} Sinüzoidal sürüş sayesinde elektromanyetik gürültü azdır.
+    \item \textbf{Uzun Ömür:} Fırça ve kollektör olmadığı için mekanik sürtünme sadece rulmanlardadır.
+\end{itemize}
+
+\textbf{Dezavantajlar:}
+\begin{itemize}
+    \item \textbf{Yüksek Maliyet:} Nadir toprak mıknatısları (NdFeB) pahalıdır.
+    \item \textbf{Demagnetizasyon Riski:} Yüksek sıcaklıkta veya ters manyetik alanlarda mıknatıslar özelliklerini kaybedebilir.
+    \item \textbf{Sürücü Zorunluluğu:} Şebekeye doğrudan bağlanamaz, karmaşık bir kontrol elektroniği gerektirir.
+    \item \textbf{Konum Bilgisi:} Rotor pozisyonunu bilmek için sensör veya gelişmiş sensörsüz algoritmalar gerekir.
+\end{itemize}
+
+\section{Uygulama Alanları}
+KMSM'ler yüksek verim ve hassasiyet gerektiren birçok alanda kullanılır:
+\begin{itemize}
+    \item \textbf{Elektrikli Araçlar (EV/HEV):} Yüksek güç yoğunluğu ve verim için (Örn: Toyota Prius, Tesla).
+    \item \textbf{Beyaz Eşya:} Çamaşır makinesi, buzdolabı kompresörleri, klimalar (Inverter teknolojisi).
+    \item \textbf{Endüstriyel Otomasyon:} Robot kolları, CNC tezgahları, servo sistemler.
+    \item \textbf{Asansörler:} Dişlisiz asansör motorları (Sessiz ve kompakt).
+    \item \textbf{Yenilenebilir Enerji:} Rüzgar türbinleri (Dişlisiz, doğrudan tahrikli jeneratörler).
+\end{itemize}
+
+\section{Kontrol Yöntemleri}
+KMSM'lerin kontrolünde rotor pozisyonu kritiktir çünkü stator alanı rotorla tam senkronize olmalıdır.
+\begin{itemize}
+    \item \textbf{Vektör Kontrolü (FOC - Field Oriented Control):} En yaygın ve hassas yöntemdir. Stator akımları, manyetik akı (d-ekseni) ve moment (q-ekseni) bileşenlerine ayrılarak DC motor gibi kontrol edilir.
+    \item \textbf{Doğrudan Moment Kontrolü (DTC):} Hızlı moment tepkisi sağlar ancak moment dalgalanması FOC'ye göre biraz daha yüksek olabilir.
+    \item \textbf{Sensörsüz Kontrol:} Maliyeti düşürmek ve güvenilirliği artırmak için sensör yerine motorun akım ve geriliminden matematiksel modellerle konum tahmini yapılır. Fan ve pompa gibi uygulamalarda yaygındır.
+\end{itemize}
+
+\newpage
+\section{KMSM Çalışma Soruları}
+
+\begin{enumerate}
+    \item Aşağıdakilerden hangisi Kalıcı Mıknatıslı Senkron Motorun (KMSM) avantajlarından biri \underline{değildir}?
+    \begin{enumerate}[label=\alph*)]
+        \item Yüksek verim
+        \item Yüksek güç yoğunluğu
+        \item Düşük maliyet
+        \item Kompakt yapı
+    \end{enumerate}
+
+    \item KMSM ile Fırçasız Doğru Akım Motoru (BLDC) arasındaki temel fark nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item KMSM fırçalıdır, BLDC fırçasızdır.
+        \item KMSM sinüzoidal zıt EMK üretir, BLDC trapezoidal zıt EMK üretir.
+        \item KMSM rotorda sargı bulundurur, BLDC mıknatıs bulundurur.
+        \item KMSM sadece DC ile çalışır.
+    \end{enumerate}
+
+    \item Aşağıdaki mıknatıs türlerinden hangisi "Nadir Toprak Elementi" sınıfına girer ve en yüksek enerji yoğunluğunu sağlar?
+    \begin{enumerate}[label=\alph*)]
+        \item Ferrit
+        \item Al-Ni-Co
+        \item Nd-Fe-B (Neodimyum)
+        \item Seramik
+    \end{enumerate}
+
+    \item Yüzey mıknatıslı (SMPMSM) rotor yapısı için aşağıdakilerden hangisi doğrudur?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatıslar rotorun içine gömülüdür.
+        \item Çok yüksek hızlar için en uygun yapıdır.
+        \item Ld ve Lq endüktansları birbirine eşittir.
+        \item Relüktans momenti üretir.
+    \end{enumerate}
+
+    \item Gömülü mıknatıslı (IPMSM) motorların en önemli mekanik avantajı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Daha ucuz olması
+        \item Merkezkaç kuvvetlerine karşı mıknatısların korunmuş olması
+        \item Daha düşük verimli olması
+        \item Hava aralığının daha büyük olması
+    \end{enumerate}
+
+    \item KMSM'lerde rotor manyetik alanı nasıl sağlanır?
+    \begin{enumerate}[label=\alph*)]
+        \item Rotor sargılarına DC akım verilerek
+        \item Rotor sargılarına AC akım verilerek
+        \item Kalıcı mıknatıslar ile
+        \item İndüksiyon yoluyla
+    \end{enumerate}
+
+    \item Asenkron motor ile karşılaştırıldığında KMSM'nin veriminin daha yüksek olmasının temel sebebi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Stator sargılarının olmaması
+        \item Rotorda bakır (I\textsuperscript{2}R) kayıplarının olmaması
+        \item Daha düşük voltajla çalışması
+        \item Hava aralığının daha geniş olması
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi KMSM'nin dezavantajlarından biridir?
+    \begin{enumerate}[label=\alph*)]
+        \item Düşük güç faktörü
+        \item Fırça bakımı gerektirmesi
+        \item Yüksek sıcaklıkta demagnetizasyon riski
+        \item Düşük kalkış momenti
+    \end{enumerate}
+
+    \item KMSM kontrolünde en yaygın kullanılan ve hassas kontrol sağlayan yöntem hangisidir?
+    \begin{enumerate}[label=\alph*)]
+        \item V/f (Skaler) Kontrol
+        \item Alan Yönlendirmeli Kontrol (FOC)
+        \item Yıldız-Üçgen yol verme
+        \item Direnç ile yol verme
+    \end{enumerate}
+
+    \item Curie sıcaklığı neyi ifade eder?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatısın eridiği sıcaklık
+        \item Mıknatısın manyetik özelliğini kalıcı olarak kaybettiği sıcaklık
+        \item Motorun maksimum çalışma sıcaklığı
+        \item Sargı yalıtımının bozulduğu sıcaklık
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi en eski ticari mıknatıs türüdür?
+    \begin{enumerate}[label=\alph*)]
+        \item Nd-Fe-B
+        \item Sm-Co
+        \item Ferrit
+        \item Al-Ni-Co
+    \end{enumerate}
+
+    \item IPMSM (Gömülü Mıknatıslı) motorlarda toplam moment hangi bileşenlerden oluşur?
+    \begin{enumerate}[label=\alph*)]
+        \item Sadece Mıknatıs Momenti
+        \item Sadece Relüktans Momenti
+        \item Mıknatıs Momenti + Relüktans Momenti
+        \item Sadece Sürtünme Momenti
+    \end{enumerate}
+
+    \item KMSM'lerde rotor konumunu algılamak için hangi sensör \underline{kullanılmaz}?
+    \begin{enumerate}[label=\alph*)]
+        \item Encoder
+        \item Resolver
+        \item Hall Sensörü
+        \item Termokupl
+    \end{enumerate}
+
+    \item Eksenel akılı KMSM'lerin en belirgin yapısal özelliği nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatısların stator üzerinde olması
+        \item Akının mil eksenine paralel (boyuna) akması
+        \item Akının mil eksenine dik (radyal) akması
+        \item Rotorun küresel olması
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi KMSM kullanım alanlarından biri \underline{değildir}?
+    \begin{enumerate}[label=\alph*)]
+        \item Elektrikli Araçlar
+        \item Servo Sistemler (Robotik)
+        \item Çok ucuz oyuncak arabalar (Genelde fırçalı DC kullanılır)
+        \item Çamaşır Makineleri
+    \end{enumerate}
+
+    \item Ferrit mıknatısların en büyük avantajı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok yüksek manyetik güç
+        \item Düşük maliyet ve korozyon direnci
+        \item Yüksek sıcaklık dayanımı
+        \item Esnek yapı
+    \end{enumerate}
+
+    \item KMSM'nin güç yoğunluğunun yüksek olması ne anlama gelir?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok fazla elektrik tüketmesi
+        \item Birim hacim veya ağırlık başına düşen çıkış gücünün fazla olması
+        \item Çok ağır olması
+        \item Sadece yüksek voltajda çalışması
+    \end{enumerate}
+
+    \item Sensörsüz kontrol yönteminin temel amacı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Motorun hızını artırmak
+        \item Maliyeti ve donanım karmaşıklığını azaltmak
+        \item Motorun torkunu artırmak
+        \item Motoru soğutmak
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi "Sert Manyetik Malzeme" tanımına uyar?
+    \begin{enumerate}[label=\alph*)]
+        \item Manyetik alan kalkınca mıknatıslığını hemen kaybeden malzeme
+        \item Manyetik alan kalksa bile mıknatıslığını koruyan malzeme (Kalıcı Mıknatıs)
+        \item Elektriği iletmeyen malzeme
+        \item Yumuşak demir
+    \end{enumerate}
+
+    \item KMSM'lerde stator sargılarına uygulanan akımın dalga şekli nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Kare dalga
+        \item Testere dişi dalga
+        \item Sinüzoidal
+        \item Doğru akım (DC)
+    \end{enumerate}
+
+    \item BLDC motorlarda komütasyon (anahtarlama) işlemi nasıl yapılır?
+    \begin{enumerate}[label=\alph*)]
+        \item Mekanik fırça ve kollektör ile
+        \item Elektronik olarak (Sürücü ile)
+        \item Manuel anahtar ile
+        \item Hidrolik sistem ile
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi Nd-Fe-B mıknatısların bir dezavantajıdır?
+    \begin{enumerate}[label=\alph*)]
+        \item Düşük enerji yoğunluğu
+        \item Korozyona (paslanmaya) karşı dayanıksız olması
+        \item Çok ağır olması
+        \item Piyasada bulunmaması
+    \end{enumerate}
+
+    \item "Line Start PMSM" (Doğrudan Hat Beslemeli) motorların rotorunda mıknatıslara ek olarak ne bulunur?
+    \begin{enumerate}[label=\alph*)]
+        \item İkinci bir mıknatıs seti
+        \item Sincap kafes çubukları (Kalkınma için)
+        \item Bilezikler
+        \item Fırçalar
+    \end{enumerate}
+
+    \item KMSM'lerde hava aralığı akı yoğunluğunun sinüzoidal olması neyi sağlar?
+    \begin{enumerate}[label=\alph*)]
+        \item Daha düşük maliyet
+        \item Daha az moment dalgalanması ve sessiz çalışma
+        \item Daha yüksek hız
+        \item Daha kolay üretim
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi motorun termal (ısıl) sınırlarını zorlayan bir durumdur?
+    \begin{enumerate}[label=\alph*)]
+        \item Yüksek verimle çalışma
+        \item Yetersiz soğutma
+        \item Düşük akım çekme
+        \item Kısa süreli çalışma
+    \end{enumerate}
+
+    \item IPMSM motorlarda Lq > Ld olmasının sebebi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatısların manyetik geçirgenliğinin havaya yakın olması ve d-ekseninde yer alması
+        \item Sargı direncinin yüksek olması
+        \item Statorun lamine olması
+        \item Rotorun alüminyumdan yapılması
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi bir KMSM sürücü sisteminin bileşenlerinden biri değildir?
+    \begin{enumerate}[label=\alph*)]
+        \item İnverter (Evirici)
+        \item Konum Sensörü
+        \item Kontrolcü (Mikroişlemci)
+        \item Mekanik Komütatör
+    \end{enumerate}
+
+    \item Sm-Co mıknatıslar hangi özellikleri nedeniyle tercih edilir?
+    \begin{enumerate}[label=\alph*)]
+        \item Ucuz olmaları
+        \item Yüksek sıcaklık kararlılığı
+        \item Kolay işlenebilmeleri
+        \item Hafif olmaları
+    \end{enumerate}
+
+    \item KMSM'nin asenkron motora göre güç faktörünün yüksek olmasının sebebi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatıslanma akımının şebekeden çekilmemesi (Mıknatıslar sağlar)
+        \item Daha hızlı dönmesi
+        \item Daha az sargı olması
+        \item Kapasitör kullanılması
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi elektrikli araçlarda KMSM kullanılmasının sebeplerinden biridir?
+    \begin{enumerate}[label=\alph*)]
+        \item Ağır olması (Yolu tutması için)
+        \item Düşük verimli olması
+        \item Rejeneratif frenleme yapabilmesi ve yüksek güç yoğunluğu
+        \item Sadece sabit hızda çalışabilmesi
+    \end{enumerate}
+
+    \item Yüzey mıknatıslı motorlarda (SMPMSM) relüktans momenti neden oluşmaz?
+    \begin{enumerate}[label=\alph*)]
+        \item Mıknatıs olmadığı için
+        \item Hava aralığı her yönde manyetik olarak simetrik olduğu için (Ld = Lq)
+        \item Akım çekmediği için
+        \item Rotor dönmediği için
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi mıknatıs malzemesi değildir?
+    \begin{enumerate}[label=\alph*)]
+        \item Bakır
+        \item Neodimyum
+        \item Samaryum Kobalt
+        \item Ferrit
+    \end{enumerate}
+
+    \item KMSM'lerde "Cogging Torque" (Dişli Momenti) nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Yük altında üretilen moment
+        \item Mıknatısların stator dişleri ile etkileşimi sonucu oluşan istenmeyen titreşimli moment
+        \item Motorun kalkış momenti
+        \item Frenleme momenti
+    \end{enumerate}
+
+    \item Bir KMSM'nin etiketinde "8 Kutuplu" yazıyorsa, bu motorun 50 Hz frekansta senkron hızı kaç devir/dakika (rpm) olur? ($n_s = 120 \cdot f / p$)
+    \begin{enumerate}[label=\alph*)]
+        \item 3000
+        \item 1500
+        \item 750
+        \item 1000
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi KMSM'nin endüstriyel bir uygulama alanı olan "Servo Motor" sistemlerinin özelliğidir?
+    \begin{enumerate}[label=\alph*)]
+        \item Hassas konum ve hız kontrolü
+        \item Sadece aç-kapa çalışması
+        \item Çok yavaş tepki vermesi
+        \item Konum geri beslemesi olmaması
+    \end{enumerate}
+
+\end{enumerate}
+
+\section{KMSM Cevap Anahtarı}
+\begin{multicols}{3}
+\begin{enumerate}
+    \item c
+    \item b
+    \item c
+    \item c
+    \item b
+    \item c
+    \item b
+    \item c
+    \item b
+    \item b
+    \item d
+    \item c
+    \item d
+    \item b
+    \item c
+    \item b
+    \item b
+    \item b
+    \item b
+    \item c
+    \item b
+    \item b
+    \item b
+    \item b
+    \item b
+    \item a
+    \item d
+    \item b
+    \item a
+    \item c
+    \item b
+    \item a
+    \item b
+    \item c
+    \item a
+\end{enumerate}
+\end{multicols}
+
+\newpage
+\part{Özel Elektrik Makineleri (Slayt Konuları)}
+
+\section{Bir Fazlı Asenkron Motorlar}
+Endüstride ve ev aletlerinde en yaygın kullanılan motor türlerinden biridir.
+\begin{itemize}
+    \item \textbf{Yapısı:} Stator ve sincap kafesli rotordan oluşur. Statorda ana sargı ve yardımcı sargı bulunur.
+    \item \textbf{Çalışma Prensibi:} Tek fazlı alternatif akım döner alan oluşturmaz, sadece çarpan (titreşen) bir alan oluşturur. Bu nedenle tek başına kalkınma momenti üretemez. Kalkınma için yardımcı sargıya ve faz farkına ihtiyaç vardır.
+    \item \textbf{Yardımcı Sargı:} Ana sargıya göre 90 derece elektrik açısıyla yerleştirilir. Akım faz farkı oluşturularak döner alan elde edilir. Motor kalkındıktan sonra genellikle merkezkaç anahtarı ile devreden çıkarılır.
+\end{itemize}
+
+\subsection{Çeşitleri}
+\begin{enumerate}
+    \item \textbf{Yardımcı Sargılı:} Kalkınma için omik direnci yüksek, endüktansı düşük yardımcı sargı kullanılır.
+    \item \textbf{Kondansatör Başlatmalı:} Yardımcı sargıya seri bir kondansatör bağlanır. Yüksek kalkış momenti sağlar. Kalkıştan sonra kondansatör devreden çıkar.
+    \item \textbf{Daimi Kondansatörlü:} Kondansatör sürekli devrededir. Sessiz çalışır, güç katsayısı yüksektir ancak kalkış momenti düşüktür.
+    \item \textbf{Çift Kondansatörlü:} Hem kalkış (elektrolitik) hem de sürekli çalışma (yağlı kağıt) kondansatörü bulunur. En iyi performansı sağlar.
+    \item \textbf{Gölge Kutuplu:} Stator kutuplarının bir kısmına bakır halka takılır. Bu halka, manyetik akıda faz farkı oluşturarak zayıf bir döner alan yaratır. Kalkış momenti çok düşüktür, küçük fanlarda kullanılır.
+\end{enumerate}
+
+\section{Üniversal Motorlar}
+Hem doğru akım (DA) hem de alternatif akım (AA) ile çalışabilen seri sargılı motorlardır.
+\begin{itemize}
+    \item \textbf{Yapısı:} Stator (endüktör) ve rotor (endüvi) sargıları birbirine seri bağlıdır. Fırça ve kollektör yapısına sahiptir.
+    \item \textbf{Özellikleri:}
+    \begin{itemize}
+        \item Çok yüksek devirlere çıkabilirler (15000-20000 d/dk).
+        \item Kalkış momentleri çok yüksektir.
+        \item Yük altında devir sayısı düşer, boşta çalıştırılmamalıdır (aşırı hızlanıp parçalanabilir).
+    \end{itemize}
+    \item \textbf{Kullanım Alanları:} Elektrikli süpürge, matkap, mikser, dikiş makinesi gibi yüksek hız ve tork gerektiren ev aletleri.
+\end{itemize}
+
+\section{Histerisis Motorlar}
+Senkron motor türüdür ve histerisis prensibiyle çalışır.
+\begin{itemize}
+    \item \textbf{Yapısı:} Statoru asenkron motora benzer. Rotoru ise sargısız, dişsiz ve yüksek histerisis kaybına sahip sert manyetik malzemeden (örn. Kobalt çeliği) yapılmış düz bir silindirdir.
+    \item \textbf{Çalışma Prensibi:} Stator döner alanı rotoru mıknatıslar. Rotor malzemesinin özelliğinden dolayı, indüklenen kutuplar stator alanını bir $\delta$ açısı kadar geriden takip eder. Bu açı histerisis momentini oluşturur.
+    \item \textbf{Özellikleri:}
+    \begin{itemize}
+        \item Kalkıştan senkron hıza kadar sabit moment üretir.
+        \item Çok sessiz ve titreşimsiz çalışır.
+        \item Senkron hızda kilitlenerek sabit hızda döner.
+    \end{itemize}
+    \item \textbf{Kullanım Alanları:} Pikaplar, teypler, saatler, hassas ses cihazları.
+\end{itemize}
+
+\section{Relüktans Motorlar}
+Relüktans (manyetik direnç) prensibiyle çalışan senkron motorlardır.
+\begin{itemize}
+    \item \textbf{Yapısı:} Statoru sargılıdır. Rotoru ise sargısız ve mıknatıssızdır, ancak çıkık kutuplu (dişli) yapıdadır. Ferromanyetik malzemeden yapılır.
+    \item \textbf{Çalışma Prensibi:} Manyetik akı, her zaman manyetik direncin (relüktansın) en düşük olduğu yolu tercih eder. Rotor dişleri, stator kutuplarının karşısına gelerek hava aralığını en aza indirmeye çalışır. Bu çekim kuvveti relüktans momentini oluşturur.
+    \item \textbf{Özellikleri:}
+    \begin{itemize}
+        \item Basit ve ucuz yapılıdır.
+        \item Sabit hızda döner (Senkron).
+        \item Adım motoru olarak da kullanılabilir (Anahtarlamalı Relüktans Motoru - SRM).
+    \end{itemize}
+    \item \textbf{Kullanım Alanları:} Zamanlayıcılar, tekstil makineleri, bazı kontrol sistemleri.
+\end{itemize}
+
+\newpage
+\section{Slayt Konuları Çalışma Soruları}
+
+\begin{enumerate}
+    \item Bir fazlı asenkron motorlarda ana sargı ile yardımcı sargı arasındaki elektriksel açı kaç derecedir?
+    \begin{enumerate}[label=\alph*)]
+        \item 45
+        \item 90
+        \item 120
+        \item 180
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi bir fazlı asenkron motor çeşidi \underline{değildir}?
+    \begin{enumerate}[label=\alph*)]
+        \item Gölge kutuplu
+        \item Kondansatör başlatmalı
+        \item Bilezikli (Rotoru sargılı)
+        \item Daimi kondansatörlü
+    \end{enumerate}
+
+    \item Üniversal motorların en belirgin özelliği nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Sadece DC ile çalışması
+        \item Çok düşük devirli olması
+        \item Hem AC hem DC ile çalışabilmesi ve yüksek devirli olması
+        \item Sabit hızda dönmesi
+    \end{enumerate}
+
+    \item Histerisis motorun rotoru hangi malzemeden yapılır?
+    \begin{enumerate}[label=\alph*)]
+        \item Yumuşak demir
+        \item Bakır
+        \item Alüminyum
+        \item Sert manyetik malzeme (Yüksek histerisis kayıplı)
+    \end{enumerate}
+
+    \item Relüktans motorun çalışma prensibi neye dayanır?
+    \begin{enumerate}[label=\alph*)]
+        \item Lorentz kuvvetine
+        \item Manyetik direncin (relüktansın) en aza indirilmesi eğilimine
+        \item Histerisis kaybına
+        \item Eddy akımlarına
+    \end{enumerate}
+
+    \item Gölge kutuplu motorların en büyük dezavantajı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok pahalı olması
+        \item Çok gürültülü çalışması
+        \item Kalkış momentinin ve veriminin çok düşük olması
+        \item DC ile çalışamaması
+    \end{enumerate}
+
+    \item Üniversal motorlar neden boşta çalıştırılmamalıdır?
+    \begin{enumerate}[label=\alph*)]
+        \item Durur
+        \item Aşırı ısınır
+        \item Devir sayısı tehlikeli boyutlara ulaşarak parçalanabilir
+        \item Ters döner
+    \end{enumerate}
+
+    \item Bir fazlı motorlarda yardımcı sargının görevi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Motoru soğutmak
+        \item Döner alan oluşturarak kalkınmayı sağlamak
+        \item Frenleme yapmak
+        \item Voltajı düşürmek
+    \end{enumerate}
+
+    \item Histerisis motorların en önemli kullanım alanı neresidir?
+    \begin{enumerate}[label=\alph*)]
+        \item Vinçler
+        \item Elektrikli trenler
+        \item Pikap ve ses kayıt cihazları (Sessiz çalışma gerektiren yerler)
+        \item Matkaplar
+    \end{enumerate}
+
+    \item Çift kondansatörlü bir fazlı motorda, kalkıştan sonra hangi kondansatör devreden çıkar?
+    \begin{enumerate}[label=\alph*)]
+        \item Daimi kondansatör
+        \item Elektrolitik (Başlatma) kondansatör
+        \item Her ikisi de
+        \item Hiçbiri
+    \end{enumerate}
+
+    \item Üniversal motorun yapısı hangi DC motor türüne benzer?
+    \begin{enumerate}[label=\alph*)]
+        \item Şönt motor
+        \item Seri motor
+        \item Kompunt motor
+        \item Fırçasız motor
+    \end{enumerate}
+
+    \item Relüktans motorun rotorunda ne bulunur?
+    \begin{enumerate}[label=\alph*)]
+        \item Sargı
+        \item Mıknatıs
+        \item Sincap kafes
+        \item Sadece çıkık kutuplar (Dişler)
+    \end{enumerate}
+
+    \item Bir fazlı motorun devir yönü nasıl değiştirilir?
+    \begin{enumerate}[label=\alph*)]
+        \item Fişi ters takarak
+        \item Sadece yardımcı sargı veya sadece ana sargı uçları yer değiştirilerek
+        \item Kondansatörü sökerek
+        \item Mümkün değildir
+    \end{enumerate}
+
+    \item Histerisis motorun tork-hız karakteristiği nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Hız arttıkça tork azalır
+        \item Kalkıştan senkron hıza kadar tork sabittir
+        \item Hız arttıkça tork artır
+        \item Sadece senkron hızda tork üretir
+    \end{enumerate}
+
+    \item Üniversal motorlarda hız ayarı nasıl yapılır?
+    \begin{enumerate}[label=\alph*)]
+        \item Kutup sayısını değiştirerek
+        \item Frekansı değiştirerek
+        \item Gerilimi değiştirerek (Örn: Triyak ile)
+        \item Rotoru değiştirerek
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi relüktans motorun avantajlarından biridir?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok yüksek tork üretmesi
+        \item Yapısının basit ve ucuz olması (Mıknatıs ve rotor sargısı yok)
+        \item Çok yüksek güç katsayısı
+        \item DC ile doğrudan çalışması
+    \end{enumerate}
+
+    \item Gölge kutuplu motorda "gölge kutup" ne işe yarar?
+    \begin{enumerate}[label=\alph*)]
+        \item Ana kutbu soğutur
+        \item Manyetik akıyı geciktirerek faz farkı oluşturur
+        \item Akımı sınırlar
+        \item Rotoru kilitler
+    \end{enumerate}
+
+    \item Daimi kondansatörlü motorun avantajı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok yüksek kalkış momenti
+        \item Merkezkaç anahtarı gerektirmez ve sessiz çalışır
+        \item DC ile çalışabilir
+        \item Çok ucuzdur
+    \end{enumerate}
+
+    \item Üniversal motor AC ile çalışırken neden kıvılcım (ark) oluşumu fazladır?
+    \begin{enumerate}[label=\alph*)]
+        \item Komütasyon zorluğu ve transformatör gerilimi nedeniyle
+        \item Düşük hızda döndüğü için
+        \item Mıknatıs olmadığı için
+        \item Soğutma yetersiz olduğu için
+    \end{enumerate}
+
+    \item Histerisis motor senkron hıza ulaştığında ne olur?
+    \begin{enumerate}[label=\alph*)]
+        \item Durur
+        \item Eddy akımları kesilir, rotor kalıcı mıknatıs gibi davranarak senkron hızda döner
+        \item Tork sıfırlanır
+        \item Ters yöne döner
+    \end{enumerate}
+
+    \item Bir fazlı motorlarda merkezkaç anahtarının görevi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Motoru durdurmak
+        \item Motor belirli bir hıza (%75) ulaşınca yardımcı sargıyı devreden çıkarmak
+        \item Hızı sabitlemek
+        \item Aşırı akımı kesmek
+    \end{enumerate}
+
+    \item Relüktans motor hangi hızda döner?
+    \begin{enumerate}[label=\alph*)]
+        \item Asenkron hızda
+        \item Senkron hızda
+        \item Kayma hızında
+        \item Değişken hızda
+    \end{enumerate}
+
+    \item Aşağıdakilerden hangisi üniversal motorun kullanım alanı \underline{değildir}?
+    \begin{enumerate}[label=\alph*)]
+        \item Elektrikli süpürge
+        \item Mikser
+        \item Matkap
+        \item Pikap (Ses cihazı)
+    \end{enumerate}
+
+    \item Histerisis motorun rotoru neden silindirik ve pürüzsüzdür?
+    \begin{enumerate}[label=\alph*)]
+        \item Hava direncini azaltmak için
+        \item Histerisis kayıplarını homojen dağıtmak ve sessiz çalışmak için
+        \item Üretimi kolay olsun diye
+        \item Soğutma için
+    \end{enumerate}
+
+    \item Kondansatör başlatmalı motorda kondansatör arızalanırsa ne olur?
+    \begin{enumerate}[label=\alph*)]
+        \item Motor ters döner
+        \item Motor kalkınamaz, inler ve ısınır
+        \item Motor normal çalışır
+        \item Motor aşırı hızlanır
+    \end{enumerate}
+
+    \item Üniversal motorun endüvi ve yastık sargıları nasıl bağlanır?
+    \begin{enumerate}[label=\alph*)]
+        \item Paralel
+        \item Seri
+        \item Karışık
+        \item Yıldız
+    \end{enumerate}
+
+    \item Relüktans momentinin oluşması için rotorun yapısı nasıl olmalıdır?
+    \begin{enumerate}[label=\alph*)]
+        \item Silindirik
+        \item Çıkık kutuplu (Manyetik anizotropi olmalı)
+        \item Bakır sargılı
+        \item Mıknatıslı
+    \end{enumerate}
+
+    \item Bir fazlı motorlarda ana sargı ile yardımcı sargı arasındaki empedans farkı nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Ana sargı: Düşük direnç, Yüksek endüktans
+        \item Ana sargı: Yüksek direnç, Düşük endüktans
+        \item İkisi de aynıdır
+        \item Yardımcı sargı: Düşük direnç, Yüksek endüktans
+    \end{enumerate}
+
+    \item Histerisis motorun verimi nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok yüksektir (%95 üzeri)
+        \item Düşüktür
+        \item Asenkron motordan yüksektir
+        \item Üniversal motordan yüksektir
+    \end{enumerate}
+
+    \item Üniversal motorun AC'de çalışırken torku DC'ye göre nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Daha yüksektir
+        \item Daha düşüktür (Pulsasyonlu tork)
+        \item Aynıdır
+        \item Sıfırdır
+    \end{enumerate}
+
+    \item Gölge kutuplu motorun dönüş yönü nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item İstenilen yöne ayarlanabilir
+        \item Her zaman gölgesiz kısımdan gölgeli kısma doğrudur (Sabittir)
+        \item Rastgeledir
+        \item Şebeke frekansına bağlıdır
+    \end{enumerate}
+
+    \item Relüktans motor adım motoru olarak kullanıldığında adı ne olur?
+    \begin{enumerate}[label=\alph*)]
+        \item Servo motor
+        \item Anahtarlamalı Relüktans Motoru (SRM)
+        \item BLDC
+        \item Step motor
+    \end{enumerate}
+
+    \item Bir fazlı motorlarda kondansatörün görevi nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Akımı sınırlamak
+        \item Akımda faz farkı oluşturarak döner alan yaratmak
+        \item Gerilimi yükseltmek
+        \item Frekansı değiştirmek
+    \end{enumerate}
+
+    \item Histerisis motorun kalkış akımı nasıldır?
+    \begin{enumerate}[label=\alph*)]
+        \item Çok yüksektir (Nominalin 10 katı)
+        \item Düşüktür (Nominal akıma yakındır)
+        \item Sıfırdır
+        \item Sonsuzdur
+    \end{enumerate}
+
+    \item Üniversal motorlarda fırça-kollektör yapısının dezavantajı nedir?
+    \begin{enumerate}[label=\alph*)]
+        \item Bakım gerektirmesi ve parazit yayması
+        \item Hızı düşürmesi
+        \item Torku azaltması
+        \item Maliyeti düşürmesi
+    \end{enumerate}
+
+\end{enumerate}
+
+\section{Slayt Konuları Cevap Anahtarı}
+\begin{multicols}{3}
+\begin{enumerate}
+    \item b
+    \item c
+    \item c
+    \item d
+    \item b
+    \item c
+    \item c
+    \item b
+    \item c
+    \item b
+    \item b
+    \item d
+    \item b
+    \item b
+    \item c
+    \item b
+    \item b
+    \item b
+    \item a
+    \item b
+    \item b
+    \item b
+    \item d
+    \item b
+    \item b
+    \item b
+    \item b
+    \item a
+    \item b
+    \item b
+    \item b
+    \item b
+    \item b
+    \item b
+    \item a
+\end{enumerate}
+\end{multicols}
+
+\end{document}
