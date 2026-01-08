@@ -211,9 +211,13 @@ def escape_latex(text):
     return "".join(replacements.get(c, c) for c in text)
 
 def main():
-    print("Extracting text from final.pdf...")
+    input_pdf = "final.pdf"
+    if len(sys.argv) > 1:
+        input_pdf = sys.argv[1]
+
+    print(f"Extracting text from {input_pdf}...")
     try:
-        text = extract_text("final.pdf")
+        text = extract_text(input_pdf)
     except Exception as e:
         print(f"Error reading PDF: {e}")
         sys.exit(1)

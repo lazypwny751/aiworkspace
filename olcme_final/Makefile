@@ -1,5 +1,6 @@
 PYTHON = .venv/bin/python
 VENV_DIR = .venv
+PDF_FILE ?= final.pdf
 
 .PHONY: all clean run setup pdf
 
@@ -12,8 +13,8 @@ setup: $(VENV_DIR)
 	$(PYTHON) -m pip install pypdf
 
 run: setup
-	@echo "Running analysis..."
-	@$(PYTHON) analyze.py
+	@echo "Running analysis on $(PDF_FILE)..."
+	@$(PYTHON) analyze.py "$(PDF_FILE)"
 
 pdf: run
 	@echo "Compiling PDF..."
